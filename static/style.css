@@ -1,0 +1,701 @@
+/* Общие стили для всех элементов */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Стили для тегов html и body */
+html,
+body {
+  height: 100%;
+  background-color: #ffffff;
+}
+
+/* Сглаживание шрифтов для разных браузеров */
+html,
+body,
+input,
+textarea,
+buttons {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Тень для текста */
+  text-shadow: 1px 1px 1px rgba(83, 16, 16, 0.004); 
+}
+
+
+/* 
+ * Layout CSS
+ */
+
+/* Стили для элемента с id "header" (шапка) */
+#header {
+  /* Фиксированное позиционирование */
+  position: fixed;
+  /* Расположение вверху страницы */
+  top: 0;
+  /* Занимает всю ширину страницы */
+  right: 0;
+  left: 0;
+  /* Находится поверх других элементов */
+  z-index: 2;
+  /* Анимация перехода */
+  transition: left 0.2s; 
+}
+
+/* Стили для элемента с id "sidedrawer" (боковая панель) */
+#sidedrawer {
+  /* Фиксированное позиционирование */
+  position: fixed;
+  /* Занимает всю высоту страницы */
+  top: 0;
+  bottom: 0;
+  /* Ширина боковой панели */
+  width: 200px;
+  /* Изначально скрыта за пределами экрана */
+  left: -200px;
+  /* Прокрутка содержимого боковой панели */
+  overflow: auto;
+  /* Находится поверх других элементов */
+  z-index: 2;
+  /* Фоновый цвет боковой панели */
+  background-color: #b7ccdd;
+  /* Анимация перехода */
+  transition: transform 0.2s; 
+}
+
+/* Стили для элемента с id "content-wrapper" (контент) */
+#content-wrapper {
+  /* Минимальная высота - 100% высоты страницы */
+  min-height: 100%;
+  /* Отключена горизонтальная прокрутка */
+  overflow-x: hidden;
+  /* Отступ слева */
+  margin-left: 0px; 
+  /* Анимация перехода */
+  transition: margin-left 0.2s;
+
+  /* Стили для фиксированного нижнего края */
+  box-sizing: border-box;
+  /* Отступ снизу */
+  margin-bottom: -160px;
+  /* Отступ снизу */
+  padding-bottom: 160px; 
+}
+
+/* Стили для элемента с id "footer" (подвал) */
+#footer {
+  /* Устанавливает режим разметки, чтобы ширина элемента 
+     включала отступы и границы */
+  box-sizing: border-box; 
+
+  /* Высота подвала */
+  height: 160px;
+  /* Отступ слева */
+  margin-left: 0px; 
+  /* Анимация перехода */
+  transition: margin-left 0.2s; 
+}
+
+/* Стили для экрана с шириной не менее 768 пикселей */
+@media (min-width: 768px) {
+  /* Стили для элемента с id "header" */
+  #header {
+    /* Отступ слева */
+    left: 200px;
+  }
+
+  /* Стили для элемента с id "sidedrawer" */
+  #sidedrawer {
+    /* Перемещает боковую панель на 200 пикселей вправо */
+    transform: translate(200px); 
+  }
+
+  /* Стили для элемента с id "content-wrapper" */
+  #content-wrapper {
+    /* Отступ слева */
+    margin-left: 200px; 
+  }
+
+  /* Стили для элемента с id "footer" */
+  #footer {
+    /* Отступ слева */
+    margin-left: 200px;
+  }
+
+  /* Стили для тела страницы, когда боковая панель скрыта */
+  body.hide-sidedrawer #header {
+    left: 0;
+  }
+
+  body.hide-sidedrawer #sidedrawer {
+    transform: translate(0px);
+  }
+
+  body.hide-sidedrawer #content-wrapper {
+    margin-left: 0;
+  }
+
+  body.hide-sidedrawer #footer {
+    margin-left: 0;
+  }
+}
+
+
+/* 
+ * Toggle Sidedrawer
+ */
+/* Стили для боковой панели, когда она активна */
+#sidedrawer.active {
+  /* Перемещает боковую панель на 200 пикселей вправо */
+  transform: translate(200px); 
+}
+
+
+/* 
+ * Header CSS
+ */
+
+/* Стили для элемента с классом "sidedrawer-toggle" (кнопка переключения боковой панели) */
+.sidedrawer-toggle {
+  /* Цвет текста */
+  color: #000000;
+  /* Курсор в виде указателя */
+  cursor: pointer;
+  /* Размер шрифта */
+  font-size: 20px;
+  /* Высота строки */
+  line-height: 20px;
+  /* Отступ справа */
+  margin-right: 10px;
+  /* Высота линии */
+
+}
+
+/* Стили для элемента с классом "sidedrawer-toggle" при наведении курсора */
+.sidedrawer-toggle:hover {
+  /* Цвет текста */
+  color: #e7e7e7;
+  /* Убирает подчеркивание */
+  text-decoration: none; 
+}
+
+
+/* 
+ * Sidedrawer CSS
+ */
+
+/* Стили для элемента с id "sidedrawer-brand" (логотип боковой панели) */
+#sidedrawer-brand {
+  /* Отступ слева */
+  padding-left: 20px; 
+}
+
+/* Стили для списков в боковой панели */
+#sidedrawer ul {
+  /* Убирает маркеры списка */
+  list-style: none; 
+}
+
+/* Стили для первого уровня списка в боковой панели */
+
+
+/* Стили для первого элемента первого уровня списка в боковой панели */
+#sidedrawer>ul>li:first-child {
+  /* Отступ сверху */
+  padding-top: 15px; 
+}
+
+/* Стили для элемента "strong" в боковой панели (вероятно, заголовок раздела) */
+#sidedrawer strong {
+  /* Занимает всю ширину родительского элемента */
+  display: block;
+  /* Отступ вокруг текста */
+  padding: 15px 22px;
+  /* Курсор в виде указателя */
+  cursor: pointer; 
+}
+
+/* Стили для элемента "strong" в боковой панели при наведении курсора */
+#sidedrawer strong:hover {
+  /* Изменяет фоновый цвет при наведении */
+  background-color: #0000003a; 
+}
+
+/* Стили для элементов списка, которые находятся непосредственно 
+   после элемента "strong" в боковой панели */
+#sidedrawer strong+ul>li {
+  /* Отступ сверху и снизу */
+  padding: 6px 0px; 
+}
+
+/* 
+ * Footer CSS
+ */
+
+/* Стили для элемента с id "footer" */
+#footer {
+  /* Фоновый цвет */
+  background-color: rgba(68, 65, 65, 0.151);
+  /* Цвет текста */
+  color: #000000;
+}
+
+/* Стили для ссылок в подвале */
+#footer a {
+  /* Цвет текста ссылок */
+  color: #000000;
+  /* Подчеркивание ссылок */
+  text-decoration: underline; 
+}
+
+/* Стили для элементов с классом "mui--appbar-height" */
+.mui--appbar-height {
+  /* Высота элемента */
+  height: 56px; 
+}
+
+/* Стили для элементов с классом "mui--appbar-min-height" и "mui-appbar" */
+.mui--appbar-min-height,
+.mui-appbar {
+  /* Минимальная высота элемента */
+  min-height: 56px; 
+}
+
+/* Стили для элементов с классом "mui--appbar-line-height1" */
+.mui--appbar-line-height1 {
+  /* Высота строки */
+  line-height: 56px;
+  /* Фоновый цвет */
+  background-color: #ffffff; 
+}
+
+/* Стили для элементов с классом "mui--appbar-top" */
+.mui--appbar-top {
+  /* Позиционирование */
+  top: 56px; 
+}
+
+/* Стили для элементов с классом "mui--appbar-height" 
+   для устройств с альбомной ориентацией и высотой не более 480 пикселей */
+@media (orientation: landscape) and (max-height: 480px) {
+  .mui--appbar-height {
+    height: 48px;
+  }
+
+  .mui--appbar-min-height,
+  .mui-appbar {
+    min-height: 48px;
+  }
+
+  .mui--appbar-line-height {
+    line-height: 48px;
+  }
+
+  .mui--appbar-top {
+    top: 48px;
+  }
+
+  /* Стили для элемента с классом "mui-tabs__bar" */
+  .mui-tabs__bar{
+    line-height: 64px;
+  }
+}
+
+/* Стили для элементов с классом "mui--appbar-height" 
+   для устройств с шириной не менее 480 пикселей */
+@media (min-width: 480px) {
+  .mui--appbar-height {
+    height: 64px;
+  }
+
+  .mui--appbar-min-height,
+  .mui-appbar {
+    min-height: 64px;
+  }
+
+  .mui--appbar-line-height {
+    line-height: 64px;
+  }
+
+  /* Стили для элемента с классом "mui-tabs__bar" */
+  .mui-tabs__bar{
+    line-height: 64px;
+  }
+
+  .mui--appbar-top {
+    top: 64px;
+  }
+}
+
+/* Стили для элемента с классом "mui-tabs__bar" */
+.mui-tabs__bar {
+  /* Убирает маркеры списка */
+  list-style: none; 
+  /* Отступ слева */
+  padding-left: 0; 
+  /* Отступ снизу */
+  margin-bottom: 0;
+  /* Прозрачный фон */
+  background-color: transparent; 
+  /* Запрещает перенос строк */
+  white-space: nowrap;
+  /* Горизонтальная прокрутка */
+  overflow-x: auto;
+}
+
+/* Стили для ссылки элемента "a" в элементе "mui-tabs__bar" 
+   при наведении курсора, если элемент не является "mui-appbar" */
+.mui-tabs__bar>li>a:hover:not(.mui-appbar) {
+  /* Убирает подчеркивание */
+  text-decoration: none;
+  /* Изменяет фоновый цвет при наведении */
+  background-color: rgba(14, 13, 13, 0.212)
+}
+
+
+/* Стили для элемента с классом "mui-appbar" */
+.mui-appbar {
+  /* Фоновый цвет */
+  background-color: #b7ccdd;
+  /* Цвет текста */
+  color: #FFF; 
+}
+
+/* Стили для элемента с классом "text-title" */
+.text-title {
+  /* Цвет текста */
+  color: #000000;
+  /* Отступ слева */
+  padding-left: 0 px; 
+  /* Фоновый цвет */
+  background-color: #ffffff;
+  /* Толщина шрифта */
+  font-weight: 500;
+  /* Размер шрифта */
+  font-size: 40px;
+  /* Высота строки */
+  line-height: 28px;
+
+  /* Толщина шрифта */
+  font-weight: bold;
+}
+
+/* Стили для элемента с классом "mui-divider" */
+.mui-divider {
+  /* Отображение как блочный элемент */
+  display: block;
+  /* Высота */
+  height: 9px;
+  /* Фоновый цвет */
+  background-color: rgba(0, 0, 0, 0.185);
+
+}
+
+/* Стили для элемента с классом "text-category" */
+.text-category {
+  /* Отступ слева */
+  padding-left: 0 px;
+  /* Толщина шрифта */
+  font-weight: 500;
+  /* Размер шрифта */
+  font-size: 18px;
+  /* Высота строки */
+  line-height: 28px;
+  /* Толщина шрифта */
+  font-weight: bold;
+  /* Цвет текста */
+  color: rgb(194, 54, 54)
+}
+
+/* Стили для элемента с классом "img_1" */
+.img_1 {
+  /* Ширина изображения */
+  width: 110px;
+  /* Позиционирование относительно родительского элемента */
+  position: relative;
+  /* Отступ слева */
+  
+  /* Отступ снизу */
+  bottom: -5px; 
+  max-width: 100%; /* Делаем изображения адаптивными */
+  height: auto; /* Сохраняем пропорции изображений */
+
+}
+
+/* Стили для элемента с классом "button" */
+.button {
+  /* Ширина кнопки */
+  width: 110px;
+  /* Липкое позиционирование */
+  position: sticky;
+  /* Отступ слева */
+  left: 1800px; 
+}
+
+/* Стили для элемента с классом "mui-container-fluid" */
+.mui-container-fluid {
+  /* Устанавливает режим разметки, чтобы ширина элемента 
+     включала отступы и границы */
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* Автоматическое выравнивание по краям */
+  margin-right: auto;
+  margin-left: auto;
+  /* Отступ слева */
+  padding-left: 20px; 
+  /* Отступ справа */
+  padding-right: 50px; 
+}
+
+/* Псевдоэлементы для "mui-container-fluid" */
+.mui-container-fluid:before,
+.mui-container-fluid:after {
+  /* Содержимое псевдоэлементов (пустое пространство) */
+  content: " ";
+  /* Отображение как таблица */
+  display: table; 
+}
+
+/* Псевдоэлемент :after для "mui-container-fluid" */
+.mui-container-fluid:after {
+  /* Очистка плавающего содержимого */
+  clear: both; 
+}
+
+/* Стили для элемента с классом "mui-container-fluid--for-button" */
+.mui-container-fluid--for-button {
+  /* Устанавливает режим разметки, чтобы ширина элемента 
+     включала отступы и границы */
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* Автоматическое выравнивание по краям */
+  margin-right: auto;
+  margin-left: auto;
+  /* Отступ сверху */
+  padding-top: 10px; 
+  /* Отступ слева */
+  padding-left: 25px; 
+  /* Отступ справа */
+  padding-right: 50px; 
+}
+
+/* Псевдоэлементы для "mui-container-fluid--for-button" */
+.mui-container-fluid--for-button:before,
+.mui-container-fluid:after {
+  /* Содержимое псевдоэлементов (пустое пространство) */
+  content: " ";
+  /* Отображение как таблица */
+  display: table; 
+}
+
+/* Псевдоэлемент :after для "mui-container-fluid--for-button" */
+.mui-container-fluid--for-button:after {
+  /* Очистка плавающего содержимого */
+  clear: both; 
+}
+
+/* Стили для элемента с классом "mui--text-center--for-button" */
+.mui--text-center--for-button {
+  /* Выравнивание текста по правому краю */
+  text-align: right; 
+}
+
+/* Стили для элемента с классом "mui-container-fluid--for-footer" */
+.mui-container-fluid--for-footer {
+  /* Устанавливает режим разметки, чтобы ширина элемента 
+     включала отступы и границы */
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* Автоматическое выравнивание по краям */
+  margin-right: auto;
+  margin-left: auto;
+  /* Отступ сверху */
+  padding-top: 6%; 
+  /* Отступ слева */
+  padding-left: 25px; 
+  /* Отступ справа */
+  padding-right: 25px; 
+}
+
+/* Псевдоэлементы для "mui-container-fluid--for-footer" */
+.mui-container-fluid--for-footer:before,
+.mui-container-fluid:after {
+  /* Содержимое псевдоэлементов (пустое пространство) */
+  content: " ";
+  /* Отображение как таблица */
+  display: table; 
+}
+
+/* Псевдоэлемент :after для "mui-container-fluid--for-footer" */
+.mui-container-fluid--for-footer:after {
+  /* Очистка плавающего содержимого */
+  clear: both; 
+}
+
+/* Стили для элемента с классом "mui--text-center--for-footer" */
+.mui--text-center--for-footer {
+  /* Выравнивание текста по правому краю */
+  text-align: right; 
+}
+.img-box {
+  /* Включаем режим отображения flex и добавляем 
+  центрирование по вертикали и горизонтали */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.silk:hover{
+  background-color: rgba(0, 0, 0, 0.137);
+
+}
+.silk-for-footer:hover{
+  background-color: rgba(205, 145, 224, 0.349);
+
+}
+/* Стили для элементов с классом "strong" */
+.strong {
+  /* Добавляет тень к тексту */
+  text-shadow:
+    0 0 4px #ffffff,
+    0 0 4px #ffffff,
+    0 0 4px #ffffff,
+    0 0 4px #ffffff;
+  /* Цвет текста */
+  color: #000000;
+}
+
+/* Стили для контейнера с классом "mui-container-fluid" */
+.mui-container-fluid {
+  /* Устанавливает режим разметки, чтобы ширина элемента 
+     включала отступы и границы */
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* Автоматическое выравнивание по краям */
+  margin-right: auto;
+  margin-left: auto;
+  /* Отступ слева */
+  padding-left: 20px; 
+  /* Отступ справа */
+  padding-right: 50px; 
+}
+
+/* Псевдоэлементы для "mui-container-fluid" */
+.mui-container-fluid:before,
+.mui-container-fluid:after {
+  /* Содержимое псевдоэлементов (пустое пространство) */
+  content: " ";
+  /* Отображение как таблица */
+  display: table; 
+}
+
+/* Псевдоэлемент :after для "mui-container-fluid" */
+.mui-container-fluid:after {
+  /* Очистка плавающего содержимого */
+  clear: both; 
+}
+
+/* Стили для контейнера с классом "mui-container-fluid--for-button" */
+.mui-container-fluid--for-button {
+  /* Устанавливает режим разметки, чтобы ширина элемента 
+     включала отступы и границы */
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* Автоматическое выравнивание по краям */
+  margin-right: auto;
+  margin-left: auto;
+  /* Отступ сверху */
+  padding-top: 10px; 
+  /* Отступ слева */
+  padding-left: 25px; 
+  /* Отступ справа */
+  padding-right: 50px; 
+}
+
+/* Псевдоэлементы для "mui-container-fluid--for-button" */
+.mui-container-fluid--for-button:before,
+.mui-container-fluid:after {
+  /* Содержимое псевдоэлементов (пустое пространство) */
+  content: " ";
+  /* Отображение как таблица */
+  display: table; 
+}
+
+/* Псевдоэлемент :after для "mui-container-fluid--for-button" */
+.mui-container-fluid--for-button:after {
+  /* Очистка плавающего содержимого */
+  clear: both; 
+}
+
+/* Стили для элемента с классом "mui--text-center--for-button" */
+.mui--text-center--for-button {
+  /* Выравнивание текста по правому краю */
+  text-align: right; 
+}
+
+/* Стили для контейнера с классом "mui-container-fluid--for-footer" */
+.mui-container-fluid--for-footer {
+  /* Устанавливает режим разметки, чтобы ширина элемента 
+     включала отступы и границы */
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* Автоматическое выравнивание по краям */
+  margin-right: auto;
+  margin-left: auto;
+  /* Отступ сверху */
+  padding-top: 6%; 
+  /* Отступ слева */
+  padding-left: 25px; 
+  /* Отступ справа */
+  padding-right: 25px; 
+}
+
+/* Псевдоэлементы для "mui-container-fluid--for-footer" */
+.mui-container-fluid--for-footer:before,
+.mui-container-fluid:after {
+  /* Содержимое псевдоэлементов (пустое пространство) */
+  content: " ";
+  /* Отображение как таблица */
+  display: table; 
+}
+
+/* Псевдоэлемент :after для "mui-container-fluid--for-footer" */
+.mui-container-fluid--for-footer:after {
+  /* Очистка плавающего содержимого */
+  clear: both; 
+}
+
+/* Стили для элемента с классом "mui--text-center--for-footer" */
+.mui--text-center--for-footer {
+  /* Выравнивание текста по правому краю */
+  text-align: right; 
+}
+
+/* Стили для элемента с классом "img-box" */
+.img-box {
+  /* Включаем режим отображения flex и добавляем 
+  центрирование по вертикали и горизонтали */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Стили для элемента с классом "silk" при наведении курсора */
+.silk:hover {
+  /* Изменяет фоновый цвет при наведении */
+  background-color: rgba(0, 0, 0, 0.137); 
+}
+
+/* Стили для элемента с классом "silk-for-footer" при наведении курсора */
+.silk-for-footer:hover {
+  /* Изменяет фоновый цвет при наведении */
+  background-color: rgba(205, 145, 224, 0.349); 
+}
+
+img {
+  max-width: 100%; /* Делаем изображения адаптивными */
+  height: auto; /* Сохраняем пропорции изображений */
+}
+
+
